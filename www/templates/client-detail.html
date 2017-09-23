@@ -1,0 +1,106 @@
+
+<ion-view view-title="{{chat.name}}" id="client-list">
+  <ion-content class="padding">
+
+    <ion-list>
+        <ion-item class="item-avatar">
+            <img src="img/TRjIh5RTXOIXnGdRizDg_images.png">
+            <h2>Max Test</h2>
+            <p><i class="icon ion-email"></i>&nbsp; knoxlaguna@gmail.com</p>
+            <p><i class="icon ion-ios-telephone"></i>&nbsp; 23456789789</p>
+        </ion-item>
+    </ion-list>
+
+
+    <ion-segment ng-model="categories" full="true"  assertive>
+      <ion-segment-button value="products">
+        Products
+      </ion-segment-button>
+      <ion-segment-button value="projects">
+        Projects
+      </ion-segment-button>
+
+    </ion-segment>
+
+    <div ng-switch="categories">
+
+    <ion-list ng-switch-when="products">
+      <!-- <div class="col text-center" style="border-right: 1px solid #ddd;">
+                <span ng-show="products.length == 0">No Items</span>
+                <ion-item class="no-border" ng-repeat="item in products">
+                    {{item.name}} ({{client.products[item.$id]}})
+                </ion-item>
+      </div> -->
+      <div class="products">
+        <ion-item class="product-item">
+          <i class="icon ion-android-checkbox-outline"></i>
+          <p>Brick(1)</p>
+        </ion-item>
+        <ion-item>
+          <i class="icon ion-android-checkbox-outline"></i>
+          <p>Wood Channel(1)</p>
+        </ion-item>
+        <ion-item>
+          <i class="icon ion-android-checkbox-outline"></i>
+          <p>Brick(2)</p>
+        </ion-item>
+
+        <button class="button button-positive button-block icon-right ion-android-settings" ng-click="editProject()">Edit
+            Products
+        </button>
+      </div>
+
+    </ion-list>
+
+    <ion-list ng-switch-when="projects">
+      <div class="projects">
+        <ion-item class="product-item">
+          <i class="icon ion-android-checkbox-outline"></i>
+          <p>Bathroom</p>
+        </ion-item>
+        <ion-item>
+          <i class="icon ion-android-checkbox-outline"></i>
+          <p>Kitchen</p>
+        </ion-item>
+        <ion-item>
+          <i class="icon ion-android-checkbox-outline"></i>
+          <p>Gardon</p>
+        </ion-item>
+        <ion-item>
+          <i class="icon ion-android-checkbox-outline"></i>
+          <p>All Project</p>
+        </ion-item>
+
+        <button class="button button-positive button-block icon-right ion-android-settings" ng-click="editProject()">Edit
+            projects
+        </button>
+      </div>
+    </ion-list>
+
+    <label class="item item-input">
+        <span class="input-label">Total Price:</span>
+        <input type="text" placeholder="$00.00" readonly ng-model="productTotalPrice">
+    </label>
+
+  </div>
+
+
+
+  <div class="order_detail">
+    <ion-item class="item-avatar item-icon-right" ng-click="viewOrder(item)">
+        <img src="http://nex-gen-flooring.com/webapp-images/forklift.jpg">
+        <h2>Order #: </h2>
+        <p>Created At:</p>
+    </ion-item>
+    <label class="item item-input">
+        <span class="input-label">Total Price:</span>
+        <input type="text" placeholder="$00.00" ng-model="orderTotalPrice" readonly>
+    </label>
+  </div>
+
+  <button class="button button-balanced button-large button-block icon-right secondary" ng-click="editProject()">
+      Generate An Order
+  </button>
+
+  </ion-content>
+</ion-view>

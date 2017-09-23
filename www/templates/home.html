@@ -1,0 +1,34 @@
+<ion-view view-title="Home" id="page1">
+  <ion-content class="bg-img">
+
+    <ion-list class="store-box" scroll="false">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Store
+        </div>
+        <select>
+          <option selected>NEX-GEN Store`</option>
+          <option>Other</option>
+        </select>
+      </label>
+    </ion-list>
+
+
+
+  </ion-content>
+
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item" ui-sref="app.add-client">
+      <i class="icon ion-person-add"></i>
+      Add Client
+    </a>
+    <a class="tab-item" ng-click="scanQR()">
+      <i class="icon ion-camera"></i>
+      Scanner
+    </a>
+    <a class="tab-item" ui-sref="app.add-product">
+      <i class="icon ion-social-dropbox"></i>
+      Add Product
+    </a>
+  </div>
+</ion-view>

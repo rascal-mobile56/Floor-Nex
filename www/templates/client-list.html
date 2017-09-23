@@ -1,0 +1,33 @@
+<ion-view view-title="Client List" id="client-list">
+
+  <ion-nav-buttons side="right">
+      <button class="button" ui-sref="app.add-client">
+          Add New
+      </button>
+  </ion-nav-buttons>
+
+  <ion-content padding="true" class="has-header">
+    <ion-slides  slider="slider2" delegate-handle="slider2" class="slider-body">
+            <ion-slide-page id="clientList-slide24"
+                            style="background:url(&quot;img/avfsZwJT9WGsBj982ul1_kitten1.jpg&quot;) no-repeat center;background-size:cover;"></ion-slide-page>
+            <ion-slide-page id="clientList-slide26"
+                            style="background:url(&quot;img/gHd5vedGQJu4s4qsPQvr_kitten2.jpg&quot;) no-repeat center;background-size:cover;"></ion-slide-page>
+            <ion-slide-page id="clientList-slide27"
+                            style="background:url(&quot;img/WE6rB9dZRTiIWQlP5qsA_kitten3.jpg&quot;) no-repeat center;background-size:cover;"></ion-slide-page>
+        </ion-slides>
+
+    <ion-list >
+       <ion-item class="item-remove-animate item-avatar item-icon-right"
+            ng-repeat="item in clientsList" type="item-text-wrap" href="#/app/client-list/{{item._id}}">
+         <img src="img/TRjIh5RTXOIXnGdRizDg_images.png">
+         <h2>{{item.name}}</h2>
+         <p>{{item.projects}}</p>
+         <i class="icon ion-chevron-right icon-accessory"></i>
+
+         <ion-option-button class="button-assertive" ng-click="remove(item)">
+           Delete
+         </ion-option-button>
+       </ion-item>
+     </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,19 @@
+<ion-view view-title="Order List">
+
+  <ion-nav-buttons side="right">
+      <button class="button" ui-sref="app.add-order">
+          Add New
+      </button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-avatar item-icon-right" ng-repeat="orderlist in orderlists" href="#/app/order-list/{{orderlist.id}}">
+        <img src="http://nex-gen-flooring.com/webapp-images/forklift.jpg">
+        <h2>Order #: {{orderlist.title}} </h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-view>

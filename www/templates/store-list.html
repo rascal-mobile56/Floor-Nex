@@ -1,0 +1,33 @@
+
+<ion-view view-title="Store List">
+  <ion-nav-bar class="bar-energized">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button" ui-sref="app.add-store">
+                Add New
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content padding="true" class="has-header">
+      <ion-list>
+          <ion-item class="item-avatar item-icon-right">
+              <!-- <img src="{{item.photo}}"> -->
+              <img src="http://nex-gen-flooring.com/webapp-images/forklift.jpg">
+              <h2>name</h2>
+              <p>city</p>
+              <i class="icon ion-ios-gear-outline"></i>
+          </ion-item>
+
+          <ion-item class="item-avatar item-icon-right" ng-repeat="item in storeData">
+              <!-- <img src="{{item.photo}}"> -->
+              <img src="http://nex-gen-flooring.com/webapp-images/forklift.jpg">
+              <h2>{{item.name}}</h2>
+              <p>{{item.city}}</p>
+              <i class="icon ion-ios-gear-outline"></i>
+          </ion-item>
+
+      </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,102 @@
+<ion-view view-title="Add Order" id="page_addorder">
+    <ion-content>
+
+
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Select A Customer
+                </div>
+                <select ng-model="modelItem" ng-options="item.name for item in customerlists"
+                        ng-change="changedCustomer(modelItem)">
+                </select>
+            </label>
+
+            <label class="item item-input item-stacked-label date">
+                <span class="input-label">Date</span>
+                <input type="date" ng-model="order.date">
+            </label>
+
+            <label class="item item-input item-stacked-label date">
+                <span class="input-label">Due Date</span>
+                <input type="date" ng-model="order.duedate">
+            </label>
+
+        </div>
+
+        <!-- <form class="list">
+          <ion-list>
+              <ion-item class="item item-select" ng-repeat="modelItem in order.projects track by $index">
+                  <span class="input-label">Select</span>
+                  <select ng-model="modelItem" ng-options="item.name for item in projectlists"
+                          ng-change="changedProject(modelItem, $index)"></select>
+                  <ion-option-button class="button-assertive" ng-click="deleteProject($index)">Delete</ion-option-button>
+              </ion-item>
+          </ion-list>
+        </form> -->
+        <div class="list">
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Select Product
+            </div>
+            <select ng-model="product" ng-options="item.name for item in productlists"
+                    ng-change="changedProduct(product)">
+            </select>
+          </label>
+
+          <label class="item item-input date">
+              <span class="input-label">Count</span>
+              <input type="number" placeholder="0" ng-model="product.count">
+          </label>
+
+          <label class="item item-input date">
+              <span class="input-label">Cost ($)</span>
+              <input type="number" placeholder="0.00" ng-model="product.cost">
+          </label>
+
+          <label class="item item-input">
+              <span class="input-label">Total ($)</span>
+              <input type="number" placeholder="0.00" ng-model="product.count">
+          </label>
+
+        </div>
+
+
+        <button ng-click="addItem()" class="button icon-left ion-ios-plus-outline">Add Item</button>
+
+
+        <div class="">
+
+            <label class="item item-input">
+                <span class="input-label">Discount ($)</span>
+                <input type="number" ng-model="order.discount">
+            </label>
+
+            <label class="item item-input">
+                <span class="input-label">Sales Tax ($)</span>
+                <input type="number" ng-model="order.sales_tax">
+            </label>
+
+            <label class="item item-input">
+                <span class="input-label">Shipping Fee ($)</span>
+                <input type="number" ng-model="order.shipping_fee">
+            </label>
+
+        </div>
+
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Total ($)</span>
+                <input type="number" ng-model="total">
+            </label>
+
+            <!-- <label class="item item-input">
+              <span class="input-label">Balance Due</span>
+              <input type="text">
+            </label> -->
+        </div>
+
+
+    </ion-content>
+</ion-view>
