@@ -10077,6 +10077,13 @@ a.button {
 #page_addorder .list input {
   text-align: center; }
 
+#page_addorder .order-save-button {
+  width: 100%;
+  padding: 10px 0px;
+  text-align: center;
+  background: #387ef5;
+  color: white; }
+
 ul#ion-segment {
   display: -webkit-box;
   display: -webkit-flex;

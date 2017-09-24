@@ -760,12 +760,19 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AddOrderCtrl', function($scope, $state, $stateParams) {
+.controller('AddOrderCtrl', function($scope, $state, $stateParams, $rootScope, _) {
 
   console.log('AddOrderCtrl');
 
-  $scope.order = { token:'', customer_id: "0", product_id:'', date:'', due_date: '', discount:'',
-                    sales_tax:'', shipping_fee:'', message:'', memo:'' }
+  $scope.order = { token:'', customer_id: "0", product_id:'', date:'', due_date: '', message:'', memo:'' }
+
+  $scope.items = [{id:0, title: "Discount", model:"", modeltitle:"discount", show: true}, {id:1, title: "Sales Tax", model:"", modeltitle:"sales_tax", show: true}, 
+                {id:2, title: "Shipping Fee", model:"", modeltitle:"shipping_fee", show: true}];
+
+
+  $rootScope.newitems = [{id:3, title: "Padding", model:"", modeltitle:"padding", show: false}, {id:4, title: "Tack Strip", model:"", modeltitle:"tack_strip", show: false}, 
+                {id:5, title: "Glue", model:"", modeltitle:"glue", show: false}, {id:6, title: "Labor", model:"", modeltitle:"labor", show: false},
+                {id:7, title: "Transition Strips", model:"", modeltitle:"transition_strips", show: false}];
 
   $scope.customerlists = [
     { name: 'Abid', value: 0 },
@@ -796,10 +803,7 @@ angular.module('starter.controllers', [])
       console.log('selectedproject', $scope.order.products);
   };
 
-  // $scope.changedProject = function(value, index){
-  //     $scope.selectedproject = $scope.projectlists[value];
-  //     $scope.order.projects[index] = value.name;
-  // };
+  
 
   $scope.addProject = function() {
     $scope.order.projects.push('a');
@@ -812,45 +816,46 @@ angular.module('starter.controllers', [])
 
 
 
+  $scope.saveOrder = function() {
+    var newOrder = _.clone($scope.order);
+    $scope.items.map((item)=> {
+      if(item.model) {
+        newOrder[item.modeltitle] = item.model;
+      }
+    });
+
+    $rootScope.newitems.map((item)=> {
+      if(item.model) {
+        newOrder[item.modeltitle] = item.model;
+      }
+    });
+
+    
+
+    console.log("neworder", newOrder);
+  }
+
+
+
 
 
 })
 
 .controller('AddItemCtrl', function($scope, $stateParams) {
   console.log('AddItemCtrl');
-  $scope.padding = { checked: false};
-  $scope.tack = { checked: false};
-  $scope.glue = { checked: false};
-  $scope.labor = { checked: false};
-  $scope.transition = { checked: false};
-
-  $scope.$on('$ionicView.afterEnter', function(event) {
-      console.log('aa', $stateParams);
-  })
-
-  // console.log('aa', $stateParams.aa);
+  console.log('aa', $stateParams);
 
 
-  $scope.paddingChange = function() {
-   console.log('Padding Change', $scope.padding.checked);
- };
+  
 
- $scope.tackChange = function() {
-  console.log('Tack Change', $scope.tack.checked);
-  };
-
-  $scope.glueChange = function() {
-   console.log('Glue Change', $scope.glue.checked);
-  };
+  $scope.onItemChange = function(item) {
+    if(!item.show) {
+      item.model = '';
+    }
+  }
 
 
-  $scope.laborChange = function() {
-   console.log('Labor Change', $scope.labor.checked);
-  };
-
-  $scope.transitionChange = function() {
-   console.log('transition Change', $scope.transition.checked);
-  };
+  
 
   $scope.goBack = function(){}
 

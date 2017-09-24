@@ -17,6 +17,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  
 
   $rootScope.apiServer = "https://immense-gorge-23346.herokuapp.com/api/";
 })
+.factory('_', ['$window', function($window) {
+    return $window._; 
+}])
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $ionicConfigProvider.backButton.previousTitleText(false);
@@ -194,6 +197,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  
 
   .state('app.add-item', {
     url: '/add-item',
+    params: {
+      bb: ""
+    },
     views:{
       'menuContent':{
         templateUrl: 'templates/add-item.html',

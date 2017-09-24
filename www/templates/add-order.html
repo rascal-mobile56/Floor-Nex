@@ -1,5 +1,5 @@
 <ion-view view-title="Add Order" id="page_addorder">
-    <ion-content>
+    <ion-content class="padding">
 
 
         <div class="list">
@@ -67,20 +67,14 @@
 
 
         <div class="">
-
-            <label class="item item-input">
-                <span class="input-label">Discount ($)</span>
-                <input type="number" ng-model="order.discount">
+            <label class="item item-input" ng-repeat="item in items">
+                <span class="input-label">{{item.title}} ($)</span>
+                <input type="number" ng-model="item.model">
             </label>
 
-            <label class="item item-input">
-                <span class="input-label">Sales Tax ($)</span>
-                <input type="number" ng-model="order.sales_tax">
-            </label>
-
-            <label class="item item-input">
-                <span class="input-label">Shipping Fee ($)</span>
-                <input type="number" ng-model="order.shipping_fee">
+            <label class="item item-input" ng-repeat="item in newitems" ng-if="item.show">
+                <span class="input-label">{{item.title}} ($)</span>
+                <input type="number" ng-model="item.model">
             </label>
 
         </div>
@@ -90,12 +84,10 @@
                 <span class="input-label">Total ($)</span>
                 <input type="number" ng-model="total">
             </label>
-
-            <!-- <label class="item item-input">
-              <span class="input-label">Balance Due</span>
-              <input type="text">
-            </label> -->
         </div>
+
+
+        <div class="order-save-button" ng-click="saveOrder()">Save</div>
 
 
     </ion-content>

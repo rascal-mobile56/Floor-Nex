@@ -8,6 +8,8 @@
     "pdfmake": "^0.1.27",
     "angular-pdf": "^1.5.1",
     "ionic-datepicker": "^1.2.1",
-    "ionic-timepicker": "^0.6.0"
+    "ionic-timepicker": "^0.6.0",
+    "lodash": "^4.17.4",
+    "restangular": "^1.6.1"
   }
 }
