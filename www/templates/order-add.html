@@ -34,20 +34,20 @@
               </ion-item>
           </ion-list>
         </form> -->
-        <div class="list" id="product">
+        <div class="list" ng-repeat="product in order.products track by $index">
 
             <label class="item item-input item-select">
               <div class="input-label">
                 Select Product
               </div>
               <select ng-model="productItem" ng-options="item.name for item in productlists"
-                      ng-change="changedProduct(productItem)">
+                      ng-change="changedProduct(productItem, $index)">
               </select>
             </label>
 
             <label class="item item-input date">
                 <span class="input-label">Count</span>
-                <input type="number"  ng-model="order.count" ng-change="onPriceChange()">
+                <input type="number"  ng-model="product.count" ng-change="onPriceChange()">
             </label>
 
             <label class="item item-input date">
@@ -57,11 +57,16 @@
 
             <label class="item item-input">
                 <span class="input-label">Total ($)</span>
-                <input type="number"  ng-model="(order.count) * (product.cost)">
+                <input type="number"  ng-model="product.count * product.cost" ng-model-options="{ getterSetter: true }">
             </label>
         </div>
 
-        <button ng-click="addProductList()" class="button button-positive  button-block">Add Product</button>
+        
+
+
+
+
+        <button ng-click="addProduct()" class="button button-positive  button-block">Add Product</button>
 
         <button ng-click="addItem()" class="button icon-left ion-ios-plus-outline">Add Item</button>
 

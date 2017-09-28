@@ -965,11 +965,11 @@ $scope.detailData={};
         return retVal;
     }
 
-    $scope.product = {cost:0};
+    // $scope.products = [{id:'', cost:0, count:0, total:0}];
 
     // $scope.order = { token:token, customer_id: "0", product_id:'', date:'', due_date: '', message:'', memo:'' }
 
-    $scope.order = {token: token, customer_id: '0', product_id:'', date:'', due_date:'', count:0, total_price:0, discount:0, shipping_fee: 0, sales_tax:0, message:'', momo:'' }
+    $scope.order = {token: token, customer_id: '0', date:'', due_date:'', total_price:0, discount:0, shipping_fee: 0, sales_tax:0, message:'', momo:'', products : [{id:'', cost:0, count:0, total:0}] }
 
     $scope.items = [{id:0, title: "Sales Tax", model:0, modeltitle:"sales_tax", show: true}, {id:1, title: "Discount", model:0, modeltitle:"discount", show: true},
                   {id:2, title: "Shipping Fee", model:0, modeltitle:"shipping_fee", show: true}];
@@ -992,28 +992,20 @@ $scope.detailData={};
         console.log('selectedcustomer', $scope.order.customer_id);
     };
 
-    $scope.changedProduct = function(value){
-        $scope.order.product_id = value._id;
-        var kk= value.cost;
-        console.log(kk);
-        $scope.product.cost = parseFloat(kk);
-        console.log('product_id', $scope.order.product_id);
+    $scope.changedProduct = function(value, index){
+        
+        $scope.order.products[index].id = value._id;
+        $scope.order.products[index].cost = parseFloat(value.cost);
+        $scope.onPriceChange();
     };
 
-
-
-    $scope.addProject = function() {
-      $scope.order.projects.push('a');
-    }
-
-    $scope.addItem = function() {
-
-      $state.go('app.add-item', {bb: 'a'});
-    }
-
     $scope.onPriceChange = function() {
-
-      $scope.order.total_price = $scope.order.count * $scope.product.cost;
+      // console.log("onPriceChange");
+      $scope.order.total_price = 0;
+      // $scope.order.total_price = $scope.order.count * $scope.product.cost;
+      $scope.order.products.map((product)=> {
+        $scope.order.total_price += product.count*product.cost;
+      });
       $scope.items.map((item)=> {
         if(item.model && item.id !=0) {
           $scope.order.total_price+=item.model;
@@ -1030,6 +1022,22 @@ $scope.detailData={};
         $scope.order.total_price = $scope.order.total_price + $scope.order.total_price*$scope.items[0].model/100;
       }
     }
+
+
+
+    $scope.addProduct = function() {
+      // $scope.order.projects.push('a');
+      let newProduct = {id:'', cost:0, count:0, total:0};
+      $scope.order.products = $scope.order.products.concat(newProduct);
+      
+    }
+
+    $scope.addItem = function() {
+
+      $state.go('app.add-item', {bb: 'a'});
+    }
+
+    
 
     $scope.saveOrder = function() {
       $scope.order.date = formatDate($scope.addorder.date);
@@ -1051,23 +1059,23 @@ $scope.detailData={};
       console.log("neworder", newOrder);
 
 
-      $ionicLoading.show();
-      var url = $rootScope.apiServer + 'order';
-      var method = "POST";
-      Server.httpDetails( method, url, newOrder).then(function (response) {
-        $ionicLoading.hide();
-           if(response.status == 200 ) {
-             console.log('Addorder Res1111', response.data);
-             $scope.goBack();
-           }else {
-              $cordovaDialogs.alert('Register Error.', 'Error!', 'OK');
-              console.error(error);
-           }
-       }).catch(function(error) {
-         $ionicLoading.hide();
-          $cordovaDialogs.alert('Server Error.', 'Error!', 'OK');
-          console.error(error);
-       });
+      // $ionicLoading.show();
+      // var url = $rootScope.apiServer + 'order';
+      // var method = "POST";
+      // Server.httpDetails( method, url, newOrder).then(function (response) {
+      //   $ionicLoading.hide();
+      //      if(response.status == 200 ) {
+      //        console.log('Addorder Res1111', response.data);
+      //        $scope.goBack();
+      //      }else {
+      //         $cordovaDialogs.alert('Register Error.', 'Error!', 'OK');
+      //         console.error(error);
+      //      }
+      //  }).catch(function(error) {
+      //    $ionicLoading.hide();
+      //     $cordovaDialogs.alert('Server Error.', 'Error!', 'OK');
+      //     console.error(error);
+      //  });
     }
 
     $scope.goBack = function(){
