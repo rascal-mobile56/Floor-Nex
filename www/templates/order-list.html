@@ -1,19 +1,23 @@
 <ion-view view-title="Order List">
 
   <ion-nav-buttons side="right">
-      <button class="button" ui-sref="app.add-order">
+      <button class="button" ui-sref="app.order-add">
           Add New
       </button>
   </ion-nav-buttons>
 
   <ion-content>
-    <ion-list>
-      <ion-item class="item-avatar item-icon-right" ng-repeat="orderlist in orderlists" href="#/app/order-list/{{orderlist.id}}">
-        <img src="http://nex-gen-flooring.com/webapp-images/forklift.jpg">
-        <h2>Order #: {{orderlist.title}} </h2>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-    </ion-list>
+
+
+    <div class="list">
+
+        <a class="item item-avatar" ng-repeat="item in orderData" ng-click="viewOrderDetail(item)">
+          <img src="http://nex-gen-flooring.com/webapp-images/forklift.jpg">
+          <h2>{{item.memo}}</h2>
+          <p>Date: {{item.date}}, Price: ${{item.total_price}}</p>
+        </a>
+
+    </div>
   </ion-content>
 
 </ion-view>

@@ -9813,7 +9813,8 @@ a.button {
   display: none; }
 
 .tab-item span {
-  font-size: 16px; }
+  font-size: 16px;
+  color: #fff !important; }
 
 .tab-nav a:nth-child(4) {
   display: none; }
@@ -9847,6 +9848,22 @@ a.button {
 .menu .menu_list {
   top: 125px;
   position: relative; }
+
+.label-available {
+  background: green;
+  padding: 5px 10px;
+  border-radius: 15px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold; }
+
+.label-unavailable {
+  background: red;
+  padding: 5px 10px;
+  border-radius: 15px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold; }
 
 #login-form1 {
   width: 80%; }
@@ -9951,6 +9968,13 @@ a.button {
 #client-list .order_detail {
   margin-top: 20px; }
 
+#order-add .list .input-label {
+  font-size: 18px; }
+
+#order-add .list input {
+  font-size: 16px;
+  text-align: center; }
+
 .select-store-box .title {
   font-size: 25px; }
 
@@ -9962,6 +9986,10 @@ a.button {
 
 .tabs-icon-top.tabs .tab-item {
   font-size: 14px; }
+
+.distributor-btns button {
+  width: 49%;
+  display: inline-block; }
 
 #productIst-form12 .item-input .icon {
   font-size: 25px; }
@@ -10076,13 +10104,6 @@ a.button {
 
 #page_addorder .list input {
   text-align: center; }
-
-#page_addorder .order-save-button {
-  width: 100%;
-  padding: 10px 0px;
-  text-align: center;
-  background: #387ef5;
-  color: white; }
 
 ul#ion-segment {
   display: -webkit-box;

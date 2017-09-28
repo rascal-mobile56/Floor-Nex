@@ -1,5 +1,5 @@
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  'plgn.ionic-segment', 'ngFileUpload', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  'plgn.ionic-segment', 'ngFileUpload', 'monospaced.qrcode', 'ngCordova'])
 
 .run(function($ionicPlatform,  $rootScope) {
   $ionicPlatform.ready(function() {
@@ -17,8 +17,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  
 
   $rootScope.apiServer = "https://immense-gorge-23346.herokuapp.com/api/";
 })
+
 .factory('_', ['$window', function($window) {
-    return $window._; 
+    return $window._;
 }])
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -64,12 +65,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  
     }
   })
 
-  .state('app.add-client', {
-    url: '/add-client',
+  .state('app.client-add', {
+    url: '/client-add',
     views: {
       'menuContent': {
-        templateUrl: 'templates/add-client.html',
-        controller: 'AddClientCtrl'
+        templateUrl: 'templates/client-add.html',
+        controller: 'ClientAddCtrl'
       }
     }
   })
@@ -114,22 +115,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  
       }
     })
 
-  .state('app.add-distributor', {
-    url: '/add-distributor',
+  .state('app.distributor-add', {
+    url: '/distributor-add',
     views: {
       'menuContent': {
-          templateUrl: 'templates/add-distributor.html',
-          controller: 'AddDistributorCtrl'
+          templateUrl: 'templates/distributor-add.html',
+          controller: 'DistributorAddCtrl'
         }
       }
   })
 
-  .state('app.distributor-details', {
-    url: '/distributor-details',
+  .state('app.distributor-detail', {
+    url: '/distributor-detail',
+    params: {
+      item: {}
+    },
     views: {
       'menuContent': {
           templateUrl: 'templates/distributor-detail.html',
-          controller: 'DistributorDetailsCtrl'
+          controller: 'DistributorDetailCtrl'
         }
       }
   })
@@ -154,12 +158,34 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  
       }
     })
 
-  .state('app.add-product', {
-    url: '/add-product',
+  .state('app.product-add', {
+    url: '/product-add',
     views: {
       'menuContent': {
-        templateUrl: 'templates/add-product.html',
-        controller: 'AddProductCtrl'
+        templateUrl: 'templates/product-add.html',
+        controller: 'ProductAddCtrl'
+      }
+    }
+  })
+  .state('app.product-detail', {
+    url: '/product-detail',
+    params: {
+      item: {}
+    },
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/product-detail.html',
+        controller: 'ProductDetailCtrl'
+      }
+    }
+  })
+
+  .state('app.product-edit', {
+    url: '/product-edit',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/product-edit.html',
+        controller: 'ProductEditCtrl'
       }
     }
   })
@@ -174,6 +200,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  
       }
     })
 
+  .state('app.store-add', {
+      url: '/store-add',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/store-add.html',
+          controller: 'StoreAddCtrl'
+        }
+      }
+    })
+
+    .state('app.store-detail', {
+        url: '/store-detail',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/store-detail.html',
+            controller: 'StoreDetailCtrl'
+          }
+        }
+      })
+
   .state('app.order-list', {
       url: '/order-list',
       views: {
@@ -184,12 +230,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  
       } 
     })
 
-  .state('app.add-order', {
-    url: '/add-order',
+  .state('app.order-add', {
+    url: '/order-add',
     views:{
       'menuContent':{
-        templateUrl: 'templates/add-order.html',
-        controller: 'AddOrderCtrl'
+        templateUrl: 'templates/order-add.html',
+        controller: 'OrderAddCtrl'
       }
     }
   })
@@ -208,14 +254,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  
     }
   })
 
-
-
-  .state('app.order-details', {
+  .state('app.order-detail', {
     url: '/order-list/:clienId',
+    params: {
+      item: {}
+    },
     views:{
       'menuContent':{
-        templateUrl: 'templates/order-details.html',
-        controller: 'OrderDetailsCtrl'
+        templateUrl: 'templates/order-detail.html',
+        controller: 'OrderDetailCtrl'
       }
     }
   })

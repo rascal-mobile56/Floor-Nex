@@ -1,7 +1,7 @@
 <ion-view title="Distributor list" id="page7">
 
       <ion-nav-buttons side="right">
-          <button class="button" ui-sref="app.add-distributor">
+          <button class="button" ui-sref="app.distributor-add">
               Add New
           </button>
       </ion-nav-buttons>
@@ -17,8 +17,7 @@
                             style="background:url(&quot;img/WE6rB9dZRTiIWQlP5qsA_kitten3.jpg&quot;) no-repeat center;background-size:cover;"></ion-slide-page>
         </ion-slides>
         <ion-list>
-            <ion-item class="item-avatar item-icon-right" ng-repeat="item in distributorlist"
-                      ui-sref="app.distributor_detail({key: item.$id})">
+            <ion-item class="item-avatar item-icon-right" ng-repeat="item in distributorlist" ng-click="viewDistributorDetail(item)">
                 <!-- <img src="{{item.photo}}"> -->
                 <img src="http://nex-gen-flooring.com/webapp-images/forklift.jpg">
                 <h2>{{item.name}}</h2>

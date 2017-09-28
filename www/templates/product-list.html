@@ -1,6 +1,6 @@
 <ion-view title="Product List" id="page8">
     <ion-nav-buttons side="right">
-        <button class="button" ui-sref="app.add-product">
+        <button class="button" ui-sref="app.product-add">
             Add New
         </button>
     </ion-nav-buttons>
@@ -10,12 +10,12 @@
 
             <form class="list">
 
-                <label class="item item-input" id="productIst-search1">
+                <label class="item item-input">
                     <i class="icon ion-search placeholder-icon"></i>
                     <input type="search" placeholder="" ng-model="searchText" ng-change="updateSearchText(searchText)">
                 </label>
 
-                <button id="productIst-button6" ng-click="showFilterOptions()"
+                <button ng-click="showFilterOptions()"
                         class="button button-positive button-small button-block button-outline icon-left ion-ios-color-wand">
                     More Options
                 </button>
@@ -43,9 +43,9 @@
             <ion-item class="item-thumbnail-left item-icon-right"  ng-repeat="item in productData" ng-click="viewProductDetail(item)">
                 <img src="{{item.image}}">
                 <h2>{{item.name}}</h2>
-                <p>Cost: ${{item.min_shipping_cost}}, Price: ${{item.price}}</p>
-                <p ng-show="item.available == true">Available</p>
-                <p ng-show="item.available == false">Unavailable</p>
+                <p>Cost: ${{item.min_shipping_cost}}, Price: ${{(item.cost * 1) + (item.cost * 1) * (item.mark_up_percent * 1) / 100}}</p>
+                <label class="{{item.available ? 'label-available' : 'label-unavailable'}}">{{item.available ? 'Available' : 'Unavailable'}}</label>
+                <!-- <p ng-show="item.available == false">Unavailable</p> -->
                 <i class="icon ion-chevron-right"></i>
             </ion-item>
 
